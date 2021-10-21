@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta
+    http-equiv="X-UA-Compatible"
+    content="IE=edge"
+  >
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+  <title>Vue3</title>
+</head>
+
+<body>
+  <!-- {{}}などが一瞬表示されないようvue.*.jsは最初に読み込んだ方が良い様子 -->
+  <script src="vue.global.js"></script>
+  <div id="app">
+    <custom-title v-slot="slotProps">
+      <h1>{{slotProps.p}}</h1>
+      <h2>{{slotProps.q}}</h2>
+    </custom-title>
+  </div>
+  <script>
+    Vue.createApp({}).component('custom-title', {
+      data() {
+        return { x: 'A', y: 1 };
+      },
+      template: `<slot :p="x" :q="y"><h1>Fallback.</h1></slot>`
+    }).mount('#app');
+  </script>
+</body>
+
+</html>
