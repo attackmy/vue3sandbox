@@ -26,7 +26,7 @@
   <script>
     Vue.createApp({}).component('custom-title', {
       data() {
-        return { x: 'Hello!', y: 1 };
+        return { x: 'Hello!!', y: 1 };
       },
       template: `<slot :p="x" :q="y"><h1>Fallback.</h1></slot>`
     }).mount('#app');
